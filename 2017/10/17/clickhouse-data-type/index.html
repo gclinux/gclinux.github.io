@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>tags | 唯忆代码</title>
+  <title>三.Clickhouse 数据类型及数据类型转换(clichouse 极简教程系列) | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -160,111 +160,91 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>每一个不曾起舞的日子都是对生命的辜负。</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
+      
 <section id="intro">
     <div class="container">
         <div class="row col-md-offset-2">
             <div class="col-md-8">
-                <h1>tags</h1>
+    			<span class="post-meta">
+      <time datetime="2017-10-17T10:39:34.000Z" itemprop="datePublished">
+          2017-10-17
+      </time>
+    
+    
+    | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
+    <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/教程/'>教程</a>
+    
+    
+</span>
+                <h1>三.Clickhouse 数据类型及数据类型转换(clichouse 极简教程系列)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-            
+      		<p>clickhouse数据类型比较丰富<br>基本类型分为:</p>
+<p><strong>1.整形</strong></p>
+<p><strong>UInt8, UInt16, UInt32, UInt64, Int8, Int16, Int32, Int64<em>**</em></strong>U开头的表示无符号类型,表示范围从0开始<br>后面的数字表示 位数(bit) 表示范围为 U开通: 0到2^N-1 非U开头: -2^N/2 到 (2^N)/2-1<br>例如 int8 表示 8位 表示范围为 -128 到 127<br>​        Uint8因为表示范围 0-255 </p>
+<p><strong>2,枚举类型</strong></p>
+<p>A.枚举类型实际是整形的一个变种,通过映射map进行转换,map的key值进行排序.</p>
+<p>B.枚举类型在排序(ORDER BY)时候特别注意,它不会按内容来排序,而是按枚举的数字key</p>
+<p>目前有两个:</p>
+<p><strong>Enum8 和 Enum16<em>**</em></strong></p>
+<p>例如:</p>
+<p>Enum8(‘hello’ = 1, ‘world’ = 2)</p>
+<p>这里特别说明一下,Enum是使用有符号的整形进行映射,因此有:</p>
+<p>Enum8(‘test’=-1)</p>
+<p>3.<strong>字符串<em>**</em></strong></p>
+<p><strong>1.FixedString(N)</strong> 定字符串,类似CHAR</p>
+<p>A.N是最大字节数(Byte),不是字符长度,如果是UTF8字符串,那么就会占用3字节,GBK会占用2字节.</p>
+<p>B.当内容少于N,数据库会自动在右填充空字节(null byte)(跟PGsql不一样,PGsql填充的是空格),当内容大于N时候,会抛出错误.</p>
+<p>C.当写入内容后面后空字节,系统不会自动去裁剪,查询的时候也会被输出(mysql不会输出)</p>
+<p>D.查询时候,它会把添加的空字符串一同输出</p>
+<p>E.<strong>FixedString(N)比String</strong> 支持更少的方法</p>
+<p>2.<strong>String </strong>️无限长字符串</p>
+<p>可以用来替换 VARCHAR ,BLOB,CLOB 等数据类型</p>
+<p>PS:clickhouse没有编码的概念,字符串存储时候就是以字节流方式存放.如果是存放文本,建议使用UTF-8,使用过程只要客户端也是使用UTF-8那么就无需转码.而一些函数,例如lengthUTF8只会在内容是UTF8时候返回才是对的.</p>
+<p><strong>4 Boolean<em>**</em></strong></p>
+<p>不好意思,clickhouse没有这个数据类型,你可以用 int8来替代(个人感觉有点浪费)</p>
+<p>5.<strong>时间类型**</strong>DateTime <strong><strong> **</strong></strong></p>
+<p>DateTime实际存储时候是Unsigned 4个字节的整数Unix时间戳.</p>
+<p>A.因为是Unsigned的整形,因此不能支持1970年1月1日（UTC/GMT的午夜）以前的时间.</p>
+<p>B.时区会影响输入和输出.请使–use_client_time_zone 进行切换时区,服务端启动时候最好使用TZ=X来保证时区</p>
+<p><strong>Date两字节存储的时间戳,最多到2038年 </strong></p>
+<p><strong>6.Array(T) 数组类型,<em>**</em></strong></p>
+<p>T是一个基本类型,包括array在内.</p>
+<p>Clickhouse不建议使用多为数组,因为MergeTree系列引擎不能很好支持多维数组</p>
+<p>7,<strong>Tuple 元数组</strong></p>
+<p>A可以认为是一种不能变的单维数组</p>
+<p>B不能被内存表以外的引擎存储,一般用于临时数据,特别是in查询的时候用.</p>
+<p>8.<strong>结构:<em>**</em></strong></p>
+<h4 id="Nested-Name1-Type1-Name2-Type2-…-类似于一种Map的格式-声明引擎的时候要明确声明结构格式-详细看引擎的介绍种的AggregatingMergeTree"><a href="#Nested-Name1-Type1-Name2-Type2-…-类似于一种Map的格式-声明引擎的时候要明确声明结构格式-详细看引擎的介绍种的AggregatingMergeTree" class="headerlink" title="Nested(Name1 Type1, Name2 Type2, …) 类似于一种Map的格式.声明引擎的时候要明确声明结构格式.详细看引擎的介绍种的AggregatingMergeTree"></a>Nested(Name1 Type1, Name2 Type2, …) 类似于一种Map的格式.声明引擎的时候要明确声明结构格式.详细看引擎的介绍种的AggregatingMergeTree</h4><p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE test.visits(</div><div class="line"></div><div class="line">    CounterID UInt32,</div><div class="line"></div><div class="line">    StartDate Date,</div><div class="line"></div><div class="line">    Sign Int8,</div><div class="line"></div><div class="line">    IsNew UInt8,</div><div class="line"></div><div class="line">    VisitID UInt64,</div><div class="line"></div><div class="line">    UserID UInt64,</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    Goals Nested</div><div class="line"></div><div class="line">    (</div><div class="line"></div><div class="line">        ID UInt32,</div><div class="line"></div><div class="line">        Serial UInt32,</div><div class="line"></div><div class="line">        EventTime DateTime,</div><div class="line"></div><div class="line">        Price Int64,</div><div class="line"></div><div class="line">        OrderID String,</div><div class="line"></div><div class="line">        CurrencyID UInt32</div><div class="line"></div><div class="line">    ),</div><div class="line"></div><div class="line">    ...) ENGINE = CollapsingMergeTree(StartDate, intHash32(UserID), (CounterID, StartDate, intHash32(UserID), VisitID), 8192, Sign)</div></pre></td></tr></table></figure>
+<p> 2.统计函数<br>支持使用统计函数作为数据类型,有点像PGSQL,需要启动时候加参数开启,需要用AggregatingMergeTree引擎,估计也用得比较少,另外有点晦涩,我自己目前不太掌握,详情请看官方文档</p>
+
             <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
-        
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2017/10/17/clickhouse-auth/">
+        二.clickhouse 配置认证(clickhouse 极简教程系列) →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
-<section id="process">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                <div class="timeline-centered">
-                    <div class="line"></div>
-                    <div class="present">Past</div>
-                    <div class="dot_tp"></div>
-                    <div class="born">Now</div>
-                    <div class="dot_bt"></div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">1</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2014/06/12-Start</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">2</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2014/11/29-XXX</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">3</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2015/02/18-DDD</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">4</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>More</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-                <!-- timeline-centered -->
-            </div>
-        </div>
-    </div>
-</section>
+
 
       
 <!-- ============================ Footer =========================== -->
