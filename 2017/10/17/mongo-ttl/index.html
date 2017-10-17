@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>mongo_ttl | 唯忆代码</title>
+  <title>利用Mongo TTL索引实现数据自动过期 | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -91,6 +91,8 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(2)</small></a></li>
+				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
 				</ul>
@@ -187,17 +189,17 @@
     
     
     | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
     <a href='/tags/mongo/'>mongo</a>,
     
     <a href='/tags/nosql/'>nosql</a>,
     
-    <a href='/tags/database/'>database</a>,
-    
-    <a href='/tags/数据库/'>数据库</a>
+    <a href='/tags/database/'>database</a>
     
     
 </span>
-                <h1>mongo_ttl</h1>
+                <h1>利用Mongo TTL索引实现数据自动过期</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
@@ -207,11 +209,17 @@
 <p>上述命令就为集合foo的lastUpdated字段上创建了一个TTL索引，如果文档的lastUpdated字段为日期类型，当服务器的时间比文档的lastUpdated字段中的时间晚24小时，文档就会被删除。</p>
 <p>当TTL建立后可以使用collMod命令修改TTL索引的超时时间：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;<span class="attr">collMod</span>:<span class="string">"tableName"</span>,<span class="attr">index</span>:&#123;<span class="attr">keyPattern</span>:&#123;<span class="attr">keyCol</span>:<span class="number">1</span>&#125;,<span class="attr">expireAfterSeconds</span>:<span class="number">3600</span> &#125;&#125;);</div></pre></td></tr></table></figure>
+<p>PS:注意问题</p>
+<p>mongo TTL的回收频率默认是1分钟,少于一分钟的过时需要一分钟才能生效.</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/17/clickhouse-install/" style="float: left;">
+        ← 一.安装clickhouse (clickhouse 极简教程系列)
+    </a>
     
     
     <a class="pull-right" href="/2017/10/16/hello-world/">

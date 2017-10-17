@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: mongo | 唯忆代码</title>
+  <title>一.安装clickhouse (clickhouse 极简教程系列) | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -177,69 +177,73 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>每一个不曾起舞的日子都是对生命的辜负。</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/17/mongo-ttl/">利用Mongo TTL索引实现数据自动过期</a></h4>
-                            
-                            <p><time datetime="2017-10-17T09:01:19.000Z"><a href="/2017/10/17/mongo-ttl/">2017-10-17</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-17T09:14:25.000Z" itemprop="datePublished">
+          2017-10-17
+      </time>
+    
+    
+    | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
+    <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/教程/'>教程</a>
+    
+    
+</span>
+                <h1>一.安装clickhouse (clickhouse 极简教程系列)</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p># vim /etc/apt/sources.list 或者 /etc/apt/sources.list.d/clickhouse.list </p>
+<p>添加下面源:<br>#clickhouse </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">deb &lt;http://repo.yandex.ru/clickhouse/trusty&gt; stable main</div></pre></td></tr></table></figure>
+<p>然后运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv E0C56BD4</div></pre></td></tr></table></figure>
+<p># 可选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install clickhouse-client clickhouse-server-common</div></pre></td></tr></table></figure>
+<p>客户端启动命令： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TZ=Asia/Shanghai clickhouse-client</div></pre></td></tr></table></figure>
+<p>另外使用 </p>
+<p>-m启用多行</p>
+<p> ,不然一换行旧会执行命令,不太符合我们平时用mysql的习惯(分号回车执行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TZ=Asia/Shanghai clickhouse-client -m</div></pre></td></tr></table></figure>
+<p>服务端启动命令：<br><code>TZ=Asia/Shanghai clickhouse-server --config-file=/etc/clickhouse-server/config.xml</code><br>支持http协议命令作为客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl &apos;&lt;http://localhost:8123/?query=SELECT%201&gt;&apos;</div></pre></td></tr></table></figure>
+<p> 输出:1</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>我最喜爱的是琶洲的夜景,不是因为她有多漂亮,而是那里记录了我奋斗的青春。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/17/clickhouse-auth/" style="float: left;">
+        ← 二.clickhouse 配置认证(clickhouse 极简教程系列)
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/17/mongo-ttl/">
+        利用Mongo TTL索引实现数据自动过期 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
