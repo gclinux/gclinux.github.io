@@ -188,11 +188,13 @@
         <div class="col-md-8 col-md-offset-2">
       		<p>clickhouse数据类型比较丰富<br>基本类型分为:</p>
 <h3 id="1-整形"><a href="#1-整形" class="headerlink" title="1.整形"></a>1.整形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UInt8, UInt16, UInt32, UInt64, Int8, Int16, Int32, Int64</div></pre></td></tr></table></figure>
-<p>U开头的表示无符号类型,表示范围从0开始<br>后面的数字表示 位数(bit) 表示范围为 U开通: 0到2^N-1 非U开头: -2^N/2 到 (2^N)/2-1<br>例如 int8 表示 8位 表示范围为 -128 到 127<br>​        Uint8因为表示范围 0-255 </p>
+<p>U开头的表示无符号类型,表示范围从0开始,后面的数字表示 位数(bit) 表示范围为 0到2^N-1<br>U开头:  非U开头: -2^N/2 到 (2^N)/2-1</p>
+<p>例如 int8 表示 8位 表示范围为 -128 到 127<br>​        Uint8因为表示范围 0-255 </p>
 <h3 id="2-枚举类型"><a href="#2-枚举类型" class="headerlink" title="2,枚举类型"></a><strong>2,枚举类型</strong></h3><p>A.枚举类型实际是整形的一个变种,通过映射map进行转换,map的key值进行排序.</p>
 <p>B.枚举类型在排序(ORDER BY)时候特别注意,它不会按内容来排序,而是按枚举的数字key</p>
 <p>目前有两个:</p>
 <p><strong>Enum8 和 Enum16</strong></p>
+<p> <em>其对应的是int8 和 int16</em></p>
 <p>例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enum8(&apos;hello&apos; = 1, &apos;world&apos; = 2)</div></pre></td></tr></table></figure>
 <p>这里特别说明一下,Enum是使用有符号的整形进行映射,因此负数也是可以的,例如:</p>
