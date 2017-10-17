@@ -87,6 +87,15 @@
             </li>
             
             
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
             
             <li>
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
@@ -204,16 +213,22 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/16/test/">测试</a></h3>
+                    <h3><a href="/2017/10/17/mongo-ttl/">mongo_ttl</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-16T10:48:54.000Z" itemprop="datePublished">
-          2017-10-16
+      <time datetime="2017-10-17T09:01:19.000Z" itemprop="datePublished">
+          2017-10-17
       </time>
     
     
     | 
-    <a href='/tags/test/'>test</a>
+    <a href='/tags/mongo/'>mongo</a>,
+    
+    <a href='/tags/nosql/'>nosql</a>,
+    
+    <a href='/tags/database/'>database</a>,
+    
+    <a href='/tags/数据库/'>数据库</a>
     
     
 </span>
@@ -222,15 +237,15 @@
                 <div class="col-md-8">
                     <p>
                       
-                        测试新建文章这是一个新建的文章
-代码测试
-1console.log(&quot;welcome&quot;)
-
+                        TTL索引（time-to-live index）允许为每一个文档设置一个超时时间，文档超过这个时间就会被删除。
+在ensureIndex中指定expireAfterSecs选项就可以创建一个TTL索引：
+1&gt;db.foo.ensureIndex(&#123;“lastUpdated”:1&#125;,&#123;“expireAfterSecs”:60*60*24&#125;)
+上述命令就为集合foo的lastUpdated字段
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/16/test/">详情...</a>
+                        <a href="/2017/10/17/mongo-ttl/">详情...</a>
                     </p>
                     
                 </div>
@@ -271,6 +286,44 @@ Typora是可视化及编码一体的,提供右击菜单选择格式
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/16/hello-world/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/16/test/">测试</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-16T10:48:54.000Z" itemprop="datePublished">
+          2017-10-16
+      </time>
+    
+    
+    | 
+    <a href='/tags/test/'>test</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        测试新建文章这是一个新建的文章
+代码测试
+1console.log(&quot;welcome&quot;)
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/16/test/">详情...</a>
                     </p>
                     
                 </div>
