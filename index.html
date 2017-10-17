@@ -288,11 +288,12 @@ users.xml。这里面分几部分。
                 <div class="col-md-8">
                     <p>
                       
-                        # vim /etc/apt/sources.list 或者 /etc/apt/sources.list.d/clickhouse.list 
-添加下面源:#clickhouse 
-1deb &lt;http://repo.yandex.ru/clickhouse/trusty&gt; stable main
+                        目前clickhouse只是对ubuntu友好,提供ubuntu的源,建议使用ubuntu
+# vim /etc/apt/sources.list 或者 /etc/apt/sources.list.d/clickhouse.list 
+添加下面源:
+12#clickhouse 源deb &lt;http://repo.yandex.ru/clickhouse/trusty&gt; stable main
 然后运行
-1sudo apt-key adv --keyserver keyserver.ubuntu.com --recv E
+1sudo apt-k
                       
                     </p>
                     
