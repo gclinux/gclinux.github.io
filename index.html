@@ -219,13 +219,13 @@
                     <p>
                       
                         clickhouse 创建数据库语法与其他SQL数据库一样
-1:)CREATE DADTABASE 数据库名;
+1:)CREATE DATABASE [IF NOT EXISTS] 数据库名;
 创建前,请确保下面clickhouse的数据库目录具有读写权限:
 1/var/lib/clickhouse/
 建议使用下面命令,把文件的所有者改为clickhouse.
 1$sudo chown clichouse /var/lib/clickhouse/ -R
-现在我们可以创建数据库:
-1:)CREATE DATABASE 
+现在我们可以创建数据库:sql
+1
                       
                     </p>
                     
@@ -255,9 +255,9 @@
     
     <a href='/tags/clickhouse/'>clickhouse</a>,
     
-    <a href='/tags/csv/'>csv</a>,
+    <a href='/tags/sql/'>sql</a>,
     
-    <a href='/tags/sql/'>sql</a>
+    <a href='/tags/csv/'>csv</a>
     
     
 </span>
