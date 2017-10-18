@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: 列式数据库 | 唯忆代码</title>
+  <title>四.clickhouse引擎简单介绍(clickhouse极简教程系列) | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -160,96 +160,72 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>每一个不曾起舞的日子都是对生命的辜负。</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/18/clickhouse-engine/">四.clickhouse引擎简单介绍(clickhouse极简教程系列)</a></h4>
-                            
-                            <p><time datetime="2017-10-18T05:44:42.000Z"><a href="/2017/10/18/clickhouse-engine/">2017-10-18</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/17/clickhouse-data-type/">三.Clickhouse 数据类型及数据类型转换(clichouse 极简教程系列)</a></h4>
-                            
-                            <p><time datetime="2017-10-17T10:39:34.000Z"><a href="/2017/10/17/clickhouse-data-type/">2017-10-17</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/17/clickhouse-auth/">二.clickhouse 配置认证(clickhouse 极简教程系列)</a></h4>
-                            
-                            <p><time datetime="2017-10-17T09:20:30.000Z"><a href="/2017/10/17/clickhouse-auth/">2017-10-17</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/17/clickhouse-install/">一.安装clickhouse (clickhouse 极简教程系列)</a></h4>
-                            
-                            <p><time datetime="2017-10-17T09:14:25.000Z"><a href="/2017/10/17/clickhouse-install/">2017-10-17</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-18T05:44:42.000Z" itemprop="datePublished">
+          2017-10-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/教程/'>教程</a>
+    
+    
+</span>
+                <h1>四.clickhouse引擎简单介绍(clickhouse极简教程系列)</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>Clickhouse是一个支持多引擎数据库<br>引擎对性能影响非常大</p>
+<h2 id="Merge-Tree-数据引擎"><a href="#Merge-Tree-数据引擎" class="headerlink" title="Merge Tree 数据引擎"></a>Merge Tree 数据引擎</h2><p>1.MergeTree是<code>一系列</code>支持主键存储的存储引擎,数据排列是根据主键顺序进行排列</p>
+<p>2.Merge Tree所有的数据结构存贮在文件column.bin中(有点像mysql的Innodb)</p>
+<p>3.主键索引不会存储具体的值,而是存储数据范围,它会存贮数据范围指针.主键只能有一个</p>
+<p>4.它适合批量插入数据,不适合连续单条插入操作.这引擎插入速度非常慢.</p>
+<p>5.<code>不支持事务</code></p>
+<p>6.对于严谨的业务,你应该用此类数据引擎<br>7.支持时间索引 </p>
+<p> 8.它是clickhouse最常用的基础引擎</p>
+<h3 id="AggregatingMergeTree"><a href="#AggregatingMergeTree" class="headerlink" title="AggregatingMergeTree"></a>AggregatingMergeTree</h3><p>支持AggregateFunction 数据类型的MergTree数据库引擎.例如:</p>
+<p>CREATE TABLE t(</p>
+<pre><code>column1 AggregateFunction(uniq, UInt64),
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>我最喜爱的是琶洲的夜景,不是因为她有多漂亮,而是那里记录了我奋斗的青春。</p>
+column2 AggregateFunction(anyIf, String, UInt8),
+</code></pre><p>column3 AggregateFunction(quantiles(0.5, 0.9), UInt64)</p>
+<p>) ENGINE = …</p>
+<h3 id="CollapsingMergeTree"><a href="#CollapsingMergeTree" class="headerlink" title="CollapsingMergeTree"></a>CollapsingMergeTree</h3><p>具有数据自动叠加覆盖功能的MergeTree.</p>
+<p>应用场景:一些增量日志.</p>
+<p>例如用户登录数据,你既想保存用户历史的登录信息,又想保存用户目前的信息,传统做法是一直累加日志,会导致大量冗余数据,例如用户帐号,而你可能只想累计记录用户登录的IP信息或者历史密码,那么这种场合适合使用它</p>
+<h3 id="ReplacingMergeTree"><a href="#ReplacingMergeTree" class="headerlink" title="ReplacingMergeTree"></a>ReplacingMergeTree</h3><p>这个引擎当主键冲突时候,会根据定义表时候的”verson”(一个时间类型的列)的大小对旧的进行删除.(有点像mysql的replace into)<br>PS:删除低版本数据过程不是实时的,它会在后台慢慢异步完成,因此你不要依赖它来保证数据唯一性</p>
+<h2 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h2><p>跟 Merge Tree 没有半毛钱关系<br>它不存放数据,只能读不能写<br>它只是用来自动合并之前拆了表的数据方便操作而已.(跟mysql的merge一个概念) </p>
+<p>待续… </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2017/10/17/clickhouse-data-type/">
+        三.Clickhouse 数据类型及数据类型转换(clichouse 极简教程系列) →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
