@@ -200,7 +200,11 @@
 <p>-m启用多行</p>
 <p> ,不然一换行旧会执行命令,不太符合我们平时用mysql的习惯(分号回车执行)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TZ=Asia/Shanghai clickhouse-client -m</div></pre></td></tr></table></figure>
-<p>服务端启动命令：<br><code>TZ=Asia/Shanghai clickhouse-server --config-file=/etc/clickhouse-server/config.xml</code><br>支持http协议命令作为客户端</p>
+<p>服务端启动命令： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#service clickhouse start</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$TZ=Asia/Shanghai clickhouse-server --config-file=/etc/clickhouse-server/config.xml</div></pre></td></tr></table></figure>
+<p>支持http协议命令作为客户端</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl &apos;&lt;http://localhost:8123/?query=SELECT%201&gt;&apos;</div></pre></td></tr></table></figure>
 <p> 输出:1</p>
 
