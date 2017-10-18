@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(4)</small></a></li>
+				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
@@ -198,6 +198,50 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/18/clickhouse-import-csv/">五.clickhouse 批量导入数据(clickhouse极简教程系列)</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-18T05:54:14.000Z" itemprop="datePublished">
+          2017-10-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/csv/'>csv</a>,
+    
+    <a href='/tags/sql/'>sql</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        大批量的数据建议使用CSV格式直接导入 优点:快,碎片少,极度非常非常非常不建议一个个sql
+1cat qv_stock_20160620035119.csv | clickhouse-client --query=&quot;INSERT INTO stock FORMAT CSV&quot;;
+如果第一行是title
+1cat /tmp/qv_stock_20160623035104.csv | clickhouse-client 
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/18/clickhouse-import-csv/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/18/clickhouse-engine/">四.clickhouse引擎简单介绍(clickhouse极简教程系列)</a></h3>
                     <span>
                         <span class="post-meta">
@@ -207,11 +251,11 @@
     
     
     | 
+    <a href='/tags/列式数据库/'>列式数据库</a>,
+    
     <a href='/tags/clickhouse/'>clickhouse</a>,
     
-    <a href='/tags/教程/'>教程</a>,
-    
-    <a href='/tags/列式数据库/'>列式数据库</a>
+    <a href='/tags/教程/'>教程</a>
     
     
 </span>
@@ -250,13 +294,13 @@ Merge Tree 数据引擎1.MergeTree是一系列支持主键存储的存储引擎,
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
-    <a href='/tags/教程/'>教程</a>,
+    <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/列式数据库/'>列式数据库</a>,
     
-    <a href='/tags/数据库/'>数据库</a>
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/教程/'>教程</a>
     
     
 </span>
@@ -294,13 +338,13 @@ U开头的表示无符号类型,表示范围从0开始,后面的数字表示 位
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
-    <a href='/tags/教程/'>教程</a>,
+    <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/列式数据库/'>列式数据库</a>,
     
-    <a href='/tags/数据库/'>数据库</a>
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/教程/'>教程</a>
     
     
 </span>
@@ -343,13 +387,13 @@ users.xml。这里面分几部分。
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
-    <a href='/tags/教程/'>教程</a>,
+    <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/列式数据库/'>列式数据库</a>,
     
-    <a href='/tags/数据库/'>数据库</a>
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/教程/'>教程</a>
     
     
 </span>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>关于Markdown编辑器 | 唯忆代码</title>
+  <title>五.clickhouse 批量导入数据(clickhouse极简教程系列) | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -166,35 +166,41 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2017-10-16T10:48:54.000Z" itemprop="datePublished">
-          2017-10-16
+      <time datetime="2017-10-18T05:54:14.000Z" itemprop="datePublished">
+          2017-10-18
       </time>
     
     
     | 
-    <a href='/tags/Markdown/'>Markdown</a>
+    <a href='/tags/数据库/'>数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/csv/'>csv</a>,
+    
+    <a href='/tags/sql/'>sql</a>
     
     
 </span>
-                <h1>关于Markdown编辑器</h1>
+                <h1>五.clickhouse 批量导入数据(clickhouse极简教程系列)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="关于Markdown编辑器"><a href="#关于Markdown编辑器" class="headerlink" title="关于Markdown编辑器"></a>关于Markdown编辑器</h2><p>这是我第一个github博客.基于hexo.</p>
-<p>在这里推荐两个编辑器</p>
-<h3 id="Miu"><a href="#Miu" class="headerlink" title="Miu"></a>Miu</h3><p>Miu下载地址:<a href="http://g.appinn.com/15j" target="_blank" rel="external">http://g.appinn.com/15j</a></p>
-<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><p><a href="https://www.typora.io" target="_blank" rel="external">https://www.typora.io</a></p>
-<p>Typora是可视化及编码一体的,提供右击菜单选择格式</p>
+      		<p>大批量的数据建议使用CSV格式直接导入 优点:快,碎片少,极度非常非常非常<code>不</code>建议一个个sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat qv_stock_20160620035119.csv | clickhouse-client --query=&quot;INSERT INTO stock FORMAT CSV&quot;;</div></pre></td></tr></table></figure>
+<p>如果第一行是title</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /tmp/qv_stock_20160623035104.csv | clickhouse-client --query=&quot;INSERT INTO stock FORMAT CSVWithNames&quot;;</div></pre></td></tr></table></figure>
+<p> 另外注意的是 CSV文件必须是 NOBOM </p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2017/10/17/mongo-ttl/" style="float: left;">
-        ← 利用Mongo TTL索引实现数据自动过期
-    </a>
     
+    <a class="pull-right" href="/2017/10/18/clickhouse-engine/">
+        四.clickhouse引擎简单介绍(clickhouse极简教程系列) →
+    </a>
     
 </nav>
 
