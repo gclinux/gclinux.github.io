@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(5)</small></a></li>
+				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(6)</small></a></li>
 				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
@@ -194,6 +194,50 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/18/clickhouse-create-database/">六.clickhouse创建第一个数据库,Create database 语句(clickhouse极简教程系列)</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-18T10:23:02.000Z" itemprop="datePublished">
+          2017-10-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/clickhouse/'>clickhouse</a>,
+    
+    <a href='/tags/sql/'>sql</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        clickhouse 创建数据库语法与其他SQL数据库一样
+1:)CREATE DADTABASE 数据库名;
+创建前,请确保下面clickhouse的数据库目录具有读写权限:
+1/var/lib/clickhouse/
+建议使用下面命令,把文件的所有者改为clickhouse.
+1$sudo chown clichouse /var/lib/clickhouse/ -R
+现在我们可以创建数据库:
+1:)CREATE DATABASE 
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/18/clickhouse-create-database/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
