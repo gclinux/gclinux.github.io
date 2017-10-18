@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(3)</small></a></li>
+				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(4)</small></a></li>
 				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
@@ -174,9 +174,9 @@
     | 
     <a href='/tags/clickhouse/'>clickhouse</a>,
     
-    <a href='/tags/列式数据库/'>列式数据库</a>,
+    <a href='/tags/教程/'>教程</a>,
     
-    <a href='/tags/教程/'>教程</a>
+    <a href='/tags/列式数据库/'>列式数据库</a>
     
     
 </span>
@@ -193,12 +193,7 @@
 <p>6.对于严谨的业务,你应该用此类数据引擎<br>7.支持时间索引 </p>
 <p> 8.它是clickhouse最常用的基础引擎</p>
 <h3 id="AggregatingMergeTree"><a href="#AggregatingMergeTree" class="headerlink" title="AggregatingMergeTree"></a>AggregatingMergeTree</h3><p>支持AggregateFunction 数据类型的MergTree数据库引擎.例如:</p>
-<p>CREATE TABLE t(</p>
-<pre><code>column1 AggregateFunction(uniq, UInt64),
-
-column2 AggregateFunction(anyIf, String, UInt8),
-</code></pre><p>column3 AggregateFunction(quantiles(0.5, 0.9), UInt64)</p>
-<p>) ENGINE = …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">CREATE TABLE t(</div><div class="line"></div><div class="line">    column1 AggregateFunction(uniq, UInt64),</div><div class="line"></div><div class="line">    column2 AggregateFunction(anyIf, String, UInt8),</div><div class="line"></div><div class="line">column3 AggregateFunction(quantiles(0.5, 0.9), UInt64)</div><div class="line"></div><div class="line">) ENGINE = ...</div></pre></td></tr></table></figure>
 <h3 id="CollapsingMergeTree"><a href="#CollapsingMergeTree" class="headerlink" title="CollapsingMergeTree"></a>CollapsingMergeTree</h3><p>具有数据自动叠加覆盖功能的MergeTree.</p>
 <p>应用场景:一些增量日志.</p>
 <p>例如用户登录数据,你既想保存用户历史的登录信息,又想保存用户目前的信息,传统做法是一直累加日志,会导致大量冗余数据,例如用户帐号,而你可能只想累计记录用户登录的IP信息或者历史密码,那么这种场合适合使用它</p>
