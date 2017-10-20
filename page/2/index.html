@@ -82,6 +82,8 @@
 				  	
 				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(6)</small></a></li>
 				    
+				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/php/" class="animsition-link">php<small>(1)</small></a></li>
@@ -198,6 +200,50 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/17/mongo-ttl/">利用Mongo TTL索引实现数据自动过期</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-17T09:01:19.000Z" itemprop="datePublished">
+          2017-10-17
+      </time>
+    
+    
+    | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
+    <a href='/tags/mongo/'>mongo</a>,
+    
+    <a href='/tags/nosql/'>nosql</a>,
+    
+    <a href='/tags/database/'>database</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        TTL索引（time-to-live index）允许为每一个文档设置一个超时时间，文档超过这个时间就会被删除。
+在ensureIndex中指定expireAfterSecs选项就可以创建一个TTL索引：
+1&gt;db.foo.ensureIndex(&#123;“lastUpdated”:1&#125;,&#123;“expireAfterSecs”:60*60*24&#125;)
+上述命令就为集合foo的lastUpdated字段
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/17/mongo-ttl/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">

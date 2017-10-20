@@ -82,6 +82,8 @@
 				  	
 				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(6)</small></a></li>
 				    
+				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/php/" class="animsition-link">php<small>(1)</small></a></li>
@@ -198,6 +200,46 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/20/linux-xz/">XZ压缩最新压缩率之王</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-20T07:44:37.000Z" itemprop="datePublished">
+          2017-10-20
+      </time>
+    
+    
+    | 
+    <a href='/tags/软件推荐/'>软件推荐</a>,
+    
+    <a href='/tags/linux/'>linux</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        XZ压缩最新压缩率之王xz这个压缩可能很多都很陌生，不过您可知道xz是绝大数linux默认就带的一个压缩工具。
+之前xz使用一直很少，所以几乎没有什么提起。
+我是在下载phpmyadmin的时候看到这种压缩格式的，phpmyadmin压缩包xz格式的居然比7z还要小，这引起我的兴趣。
+最新一段时间会经常听到xz被采用的声音，像是最新的archlinux某些东西就使用xz压缩。不过xz也有一个坏处就是压缩时间比较长，比7z压缩时间还长一些
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/20/linux-xz/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -377,11 +419,11 @@ P2P技术就是使用的人越多下载速度越快，
     | 
     <a href='/tags/clickhouse/'>clickhouse</a>,
     
+    <a href='/tags/sql/'>sql</a>,
+    
     <a href='/tags/数据库/'>数据库</a>,
     
-    <a href='/tags/csv/'>csv</a>,
-    
-    <a href='/tags/sql/'>sql</a>
+    <a href='/tags/csv/'>csv</a>
     
     
 </span>
@@ -581,50 +623,6 @@ users.xml。这里面分几部分。
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/17/clickhouse-install/">详情...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/17/mongo-ttl/">利用Mongo TTL索引实现数据自动过期</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-17T09:01:19.000Z" itemprop="datePublished">
-          2017-10-17
-      </time>
-    
-    
-    | 
-    <a href='/tags/数据库/'>数据库</a>,
-    
-    <a href='/tags/mongo/'>mongo</a>,
-    
-    <a href='/tags/nosql/'>nosql</a>,
-    
-    <a href='/tags/database/'>database</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        TTL索引（time-to-live index）允许为每一个文档设置一个超时时间，文档超过这个时间就会被删除。
-在ensureIndex中指定expireAfterSecs选项就可以创建一个TTL索引：
-1&gt;db.foo.ensureIndex(&#123;“lastUpdated”:1&#125;,&#123;“expireAfterSecs”:60*60*24&#125;)
-上述命令就为集合foo的lastUpdated字段
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/17/mongo-ttl/">详情...</a>
                     </p>
                     
                 </div>
