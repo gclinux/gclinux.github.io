@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>二.clickhouse 配置认证(clickhouse 极简教程系列) | 唯忆代码</title>
+  <title>唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -164,76 +164,95 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>每一个不曾起舞的日子都是对生命的辜负。</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p></p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
 <section id="intro">
     <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2017-10-17T09:20:30.000Z" itemprop="datePublished">
-          2017-10-17
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/16/hello-world/">关于Markdown编辑器</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-16T10:48:54.000Z" itemprop="datePublished">
+          2017-10-16
       </time>
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
-    <a href='/tags/数据库/'>数据库</a>,
-    
-    <a href='/tags/列式数据库/'>列式数据库</a>,
-    
-    <a href='/tags/教程/'>教程</a>
+    <a href='/tags/Markdown/'>Markdown</a>
     
     
 </span>
-                <h1>二.clickhouse 配置认证(clickhouse 极简教程系列)</h1>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        关于Markdown编辑器这是我第一个github博客.基于hexo.
+在这里推荐两个编辑器
+MiuMiu下载地址:http://g.appinn.com/15j
+Typorahttps://www.typora.io
+Typora是可视化及编码一体的,提供右击菜单选择格式
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/16/hello-world/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p>1.ClickHouse不像MySQL那样，直接创建用户，而是需要在配置文件里面添加用户<br>2.用户置文件默认位置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/clickhouse-server/users.xml</div></pre></td></tr></table></figure>
-<p>users.xml。这里面分几部分。</p>
-<ol>
-<li>用户名，用户密码，访问来源地址</li>
-<li>资源限制，和greenplum有点像。</li>
-<li>配置设置，这其中有用户是否只读。ck目前只有select和insert。所以权限也比较简单。</li>
-</ol>
-<p>密码需要特殊说明，如果不写，那么就是空密码，也可以写明文密码，也可以写密文，可以用如下命令生成密文密码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># PASSWORD=$(base64 &lt; /dev/urandom | head -c8); echo &quot;$PASSWORD&quot;; echo -n &quot;$PASSWORD&quot; | sha256sum | tr -d &apos;-&apos; AwBtorOK</div><div class="line"></div><div class="line">4e588aea92dc77d0960505f6ff5e843eab388c28f1c85fae9df917f89ebb0ed6</div></pre></td></tr></table></figure>
-<p>其中AwBtorOK就是用户的密码，4e588aea92dc77d0960505f6ff5e843eab388c28f1c85fae9df917f89ebb0ed6就是密文，需要写在配置文件里面。<br> 下面是一个例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;dba&gt;</div><div class="line"> &lt;password_sha256_hex&gt;60cd41aedc4e47e8883682b416109e7b7e345e15decc63c2c98ecdab5e8e053a&lt;/password_sha256_hex&gt;</div><div class="line"> &lt;networks incl=&quot;networks&quot; /&gt; </div><div class="line"> &lt;profile&gt;readonly&lt;/profile&gt;</div><div class="line"> &lt;quota&gt;default&lt;/quota&gt; </div><div class="line"> &lt;allow_databases&gt; </div><div class="line">      &lt;database&gt;default&lt;/database&gt; </div><div class="line"> &lt;/allow_databases&gt;</div><div class="line">&lt;/dba&gt;</div></pre></td></tr></table></figure>
-<p>这段的意思就是添加一个dba用户，只读权限，允许访问的数据库是default。来源ip是不限制。这个是配置在/etc/metrika.xml中的。这个配置只是引用而已。</p>
-<p>//metrika.xml里的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;networks&gt; &lt;ip&gt;::/0&lt;/ip&gt; &lt;/networks&gt;</div></pre></td></tr></table></figure>
-<p>下面用dba用户登录试试：</p>
-<p>clickhouse-client -u dba -h 192.168.0.10 –password mc1lF9cI</p>
-<p>可以看见只读模式，权限比较简单，更多的请参考官方文档。或者仔细阅读users.xml。<br>ps:里面有默认的账户 default 可以参考</p>
-<p>参考文档：</p>
-<p><a href="https://clickhouse.yandex/reference_en.html#Access%20rights" target="_blank" rel="external">https://clickhouse.yandex/reference_en.html#Access%20rights</a></p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
+        
         <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2017/10/17/clickhouse-data-type/" style="float: left;">
-        ← 三.Clickhouse 数据类型及数据类型转换(clichouse 极简教程系列)
-    </a>
-    
-    
-    <a class="pull-right" href="/2017/10/17/clickhouse-install/">
-        一.安装clickhouse (clickhouse 极简教程系列) →
-    </a>
-    
-</nav>
-
-        <div class="duoshuo">
-
-
-</div>
+          <a class="pull-left" href="/">← Newer Posts</a>
+          
+        </nav>
     </div>
 </section>
-
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>我最喜爱的是琶洲的夜景,不是因为她有多漂亮,而是那里记录了我奋斗的青春。</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
 
       
 <!-- ============================ Footer =========================== -->
