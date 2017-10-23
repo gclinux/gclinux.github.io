@@ -80,6 +80,8 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/Linux/" class="animsition-link">Linux<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(6)</small></a></li>
 				    
 				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
@@ -204,6 +206,46 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/23/mysql-auto-backup-shell/">mysql-auto-backup-shell</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-23T06:22:05.000Z" itemprop="datePublished">
+          2017-10-23
+      </time>
+    
+    
+    | 
+    <a href='/tags/shell/'>shell</a>,
+    
+    <a href='/tags/linux/'>linux</a>,
+    
+    <a href='/tags/mysql/'>mysql</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        一个自动备份mysql全量数据并保存一周的脚本
+1234567#!/bin/shbackupdir=/data/mysql_backup#备份位置 /data/mysql_backup 请确保文件夹存在并具有读写权限time=` date +%Y%m%d%H `mysqldump -h 主机IP -u 帐号 -p密码 要备份的数据库名字 | gzip &gt; $backupdir/backup_ams_data_$time.sql.g
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/23/mysql-auto-backup-shell/">详情...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/20/linux-xz/">XZ压缩最新压缩率之王</a></h3>
                     <span>
                         <span class="post-meta">
@@ -213,9 +255,9 @@
     
     
     | 
-    <a href='/tags/软件推荐/'>软件推荐</a>,
+    <a href='/tags/linux/'>linux</a>,
     
-    <a href='/tags/linux/'>linux</a>
+    <a href='/tags/软件推荐/'>软件推荐</a>
     
     
 </span>
@@ -417,11 +459,11 @@ P2P技术就是使用的人越多下载速度越快，
     
     
     | 
+    <a href='/tags/数据库/'>数据库</a>,
+    
     <a href='/tags/clickhouse/'>clickhouse</a>,
     
     <a href='/tags/sql/'>sql</a>,
-    
-    <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/csv/'>csv</a>
     
@@ -461,9 +503,9 @@ P2P技术就是使用的人越多下载速度越快，
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
     <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
     
     <a href='/tags/教程/'>教程</a>
     
@@ -504,11 +546,11 @@ Merge Tree 数据引擎1.MergeTree是一系列支持主键存储的存储引擎,
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
     <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
     
     <a href='/tags/教程/'>教程</a>
     
@@ -548,11 +590,11 @@ U开头的表示无符号类型,表示范围从0开始,后面的数字表示 位
     
     
     | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
     <a href='/tags/数据库/'>数据库</a>,
     
     <a href='/tags/列式数据库/'>列式数据库</a>,
+    
+    <a href='/tags/clickhouse/'>clickhouse</a>,
     
     <a href='/tags/教程/'>教程</a>
     
@@ -577,52 +619,6 @@ users.xml。这里面分几部分。
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/17/clickhouse-auth/">详情...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/17/clickhouse-install/">一.安装clickhouse (clickhouse 极简教程系列)</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-17T09:14:25.000Z" itemprop="datePublished">
-          2017-10-17
-      </time>
-    
-    
-    | 
-    <a href='/tags/clickhouse/'>clickhouse</a>,
-    
-    <a href='/tags/数据库/'>数据库</a>,
-    
-    <a href='/tags/列式数据库/'>列式数据库</a>,
-    
-    <a href='/tags/教程/'>教程</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        目前clickhouse只是对ubuntu友好,提供ubuntu的源,建议使用ubuntu
-# vim /etc/apt/sources.list 或者 /etc/apt/sources.list.d/clickhouse.list 
-添加下面源:
-12#clickhouse 源deb &lt;http://repo.yandex.ru/clickhouse/trusty&gt; stable main
-然后运行
-1sudo apt-k
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/17/clickhouse-install/">详情...</a>
                     </p>
                     
                 </div>
