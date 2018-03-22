@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>解决mongo sort operation max 33554432 bytes 错误(Sort operation used more than the maximum 33554432 bytes of RAM) | 唯忆代码</title>
+  <title>唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -86,7 +86,7 @@
 				    
 				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(2)</small></a></li>
+				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/php/" class="animsition-link">php<small>(1)</small></a></li>
 				    
@@ -176,24 +176,20 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2018-03-01T02:55:51.000Z" itemprop="datePublished">
-          2018-03-01
+      <time datetime="2018-03-22T03:08:27.788Z" itemprop="datePublished">
+          2018-03-22
       </time>
     
-    
-    | 
-    <a href='/tags/mongo/'>mongo</a>
-    
-    
 </span>
-                <h1>解决mongo sort operation max 33554432 bytes 错误(Sort operation used more than the maximum 33554432 bytes of RAM)</h1>
+                <h1></h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>mongo 错误提示:OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit</p>
-<hr>
+      		<hr>
+<p>title: 解决mongo sort operation max 33554432 bytes 错误(Sort operation used more than the maximum 33554432 bytes of RAM)<br>date: 2018-03-01 10:55:51<br>category: mongo<br>tags:</p>
+<pre><code>- mongo
+</code></pre><p>mongo 错误提示:OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit</p>
 <p>原因:<br>Mongodb的sort操作是把数据拿到内存中再进行排序的，为了节约内存，默认给sort操作限制了最大内存为32Mb，当数据量越来越大直到超过32Mb的时候就自然抛出异常了.值得注意是,如果你使用 skip 和 limit 联合使用实际也会产生排序.</p>
-<hr>
 <p>解决方案:</p>
 <p>方法1: 加大缓冲区</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//查询值</span></div><div class="line">db.runCommand(&#123; <span class="string">"getParameter"</span> : <span class="number">1</span>, <span class="string">"internalQueryExecMaxBlockingSortBytes"</span> : <span class="number">1</span> &#125; )</div><div class="line"><span class="comment">//设置新值</span></div><div class="line">db.adminCommand(&#123;<span class="string">"setParameter"</span>:<span class="number">1</span>, <span class="string">"internalQueryExecMaxBlockingSortBytes"</span>:<span class="number">335544320</span>&#125;)</div></pre></td></tr></table></figure>
