@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: test | 唯忆代码</title>
+  <title>解决mongo sort operation max 33554432 bytes 错误(Sort operation used more than the maximum 33554432 bytes of RAM) | 唯忆代码</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -80,9 +80,19 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(3)</small></a></li>
+				    <li><a href="/categories/Linux/" class="animsition-link">Linux<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(1)</small></a></li>
+				    <li><a href="/categories/clickhouse/" class="animsition-link">clickhouse<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/mongo/" class="animsition-link">mongo<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/php/" class="animsition-link">php<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/sublime/" class="animsition-link">sublime<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/精品软件/" class="animsition-link">精品软件<small>(1)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -160,69 +170,56 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>每一个不曾起舞的日子都是对生命的辜负。</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/10/16/test/">测试</a></h4>
-                            
-                            <p><time datetime="2017-10-16T10:48:54.000Z"><a href="/2017/10/16/test/">2017-10-16</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-03-01T02:55:51.000Z" itemprop="datePublished">
+          2018-03-01
+      </time>
+    
+    
+    | 
+    <a href='/tags/mongo/'>mongo</a>
+    
+    
+</span>
+                <h1>解决mongo sort operation max 33554432 bytes 错误(Sort operation used more than the maximum 33554432 bytes of RAM)</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>mongo 错误提示:OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit</p>
+<hr>
+<p>原因:<br>Mongodb的sort操作是把数据拿到内存中再进行排序的，为了节约内存，默认给sort操作限制了最大内存为32Mb，当数据量越来越大直到超过32Mb的时候就自然抛出异常了.值得注意是,如果你使用 skip 和 limit 联合使用实际也会产生排序.</p>
+<hr>
+<p>解决方案:</p>
+<p>方法1: 加大缓冲区</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//查询值</span></div><div class="line">db.runCommand(&#123; <span class="string">"getParameter"</span> : <span class="number">1</span>, <span class="string">"internalQueryExecMaxBlockingSortBytes"</span> : <span class="number">1</span> &#125; )</div><div class="line"><span class="comment">//设置新值</span></div><div class="line">db.adminCommand(&#123;<span class="string">"setParameter"</span>:<span class="number">1</span>, <span class="string">"internalQueryExecMaxBlockingSortBytes"</span>:<span class="number">335544320</span>&#125;)</div></pre></td></tr></table></figure>
+<p>方法2:</p>
+<p>根据业务对排序的key进行建立索引</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>我最喜爱的是琶洲的夜景,不是因为她有多漂亮,而是那里记录了我奋斗的青春。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2017/11/01/sublime3-lince/">
+        sublime3 注册码 目前亲测最新版可用 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
